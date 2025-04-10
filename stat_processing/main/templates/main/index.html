@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <!--
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    -->
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+</head>
+<body>
+    <h1>Медицинская статистика</h1>
+    <p>{{ tasks }}</p>
+
+<!-- Вкладки -->
+<div class="tab">
+  <input checked id="tab-btn-1" name="tab-btn" type="radio" value="">
+  <label for="tab-btn-1">Критерий знаков</label>
+  <input id="tab-btn-2" name="tab-btn" type="radio" value="">
+  <label for="tab-btn-2">Метод еще какого-то умного мужика</label>
+  <input id="tab-btn-3" name="tab-btn" type="radio" value="">
+  <label for="tab-btn-3">Еще какой-то расчет</label>
+
+<!-- Вкладки конец -->
+
+  <div class="tab-content" id="content-1" align="center">
+      <p>Вводим пары значений, от 8 штук. <br> Посчитаем плюcики и минусики получим результат согласно табличке критериев.<br>
+      Сюда тыкай, туда не тыкай, и будет какой-то результат
+      </p>
+    <form action="{% url 'result' %}" method="POST">
+        {% csrf_token %}
+        <table width="20%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+            <tr align="center" valign="middle">
+                <th>Значение А</th>
+                <th>Значение Б</th>
+            </tr>
+            <tr align="center">
+                <td>
+                    <textarea name="first_param" required cols="4" rows="10" minlength="4" wrap="soft"></textarea>
+                </td>
+                <td>
+                    <textarea name="second_param" required cols="4" rows="10" wrap="soft"></textarea>
+                </td>
+            </tr>
+        </table>
+        <p></p>
+        <button type="submit">Расчитать</button>
+        <input name="reset" type="reset">
+    </form>
+  </div>
+
+
+  <div class="tab-content" id="content-2">
+    <form action="{% url 'result' %}" method="POST">
+        {% csrf_token %}
+        <input name="first_param" type="text" maxlength="10" placeholder="Параметр 1"><br>
+        <input name="second_param"  type="number" required placeholder="Параметр 2"><br>
+        <input name="third_param"  type="number" step=".01" required placeholder="Параметр 2"><br>
+        <button type="submit">Расчитать</button>
+        <input name="reset" type="reset">
+    </form>
+  </div>
+
+  <div class="tab-content" id="content-3">
+    Содержимое 3...
+  </div>
+</div>
+
+</body>
+</html>
