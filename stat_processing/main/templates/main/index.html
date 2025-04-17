@@ -20,7 +20,7 @@
   <input checked id="tab-btn-1" name="tab-btn" type="radio" value="">
   <label for="tab-btn-1">Критерий знаков</label>
   <input id="tab-btn-2" name="tab-btn" type="radio" value="">
-  <label for="tab-btn-2">Метод еще какого-то умного мужика</label>
+  <label for="tab-btn-2">Второй метод</label>
   <input id="tab-btn-3" name="tab-btn" type="radio" value="">
   <label for="tab-btn-3">Еще какой-то расчет</label>
 
@@ -28,7 +28,7 @@
 
   <div class="tab-content" id="content-1" align="center">
       <p>Вводим пары значений, от 8 штук. <br> Посчитаем плюcики и минусики получим результат согласно табличке критериев.<br>
-      Сюда тыкай, туда не тыкай, и будет какой-то результат
+      Сюда тыкай, туда не тыкай, вот такое тут кратенькое описание.
       </p>
     <form action="{% url 'result' %}" method="POST">
         {% csrf_token %}
