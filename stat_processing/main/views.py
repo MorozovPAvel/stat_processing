@@ -67,9 +67,9 @@ def result_stat_param2(request):
 
         print(int(param1), param2, param3)
 
-        result = 'В этом расчете пока ничего нет! <br> Ведутся работы!!!!'
+        result = 'В этом расчете пока ничего нет! Ведутся работы!!!!'
     except:
         print('ОШИБКА')
         result = 'Что-то пошло не так, проверьте введенные данные'
 
-    return render(request, 'main/result2.html', {result: result})
+    return render(request, 'main/result2.html', {'result': result})
