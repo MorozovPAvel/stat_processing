@@ -56,7 +56,7 @@
 
 
   <div class="tab-content" id="content-2">
-    <form action="{% url 'result' %}" method="POST">
+    <form action="{% url 'result_stat_param2' %}" method="POST">
         {% csrf_token %}
         <input name="first_param" type="text" maxlength="10" placeholder="Параметр 1"><br>
         <input name="second_param"  type="number" required placeholder="Параметр 2"><br>

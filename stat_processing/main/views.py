@@ -57,3 +57,19 @@ def result_page(request):
                                                 'count_plus': count_plus,
                                                 'count_minus': count_minus})
 
+def result_stat_param2(request):
+    result = ''
+    print("вторая вкладка")
+    try:
+        param1 = request.POST['first_param']
+        param2 = request.POST['second_param']
+        param3 = request.POST['third_param']
+
+        print(int(param1), param2, param3)
+
+        result = 'В этом расчете пока ничего нет! <br> Ведутся работы!!!!'
+    except:
+        print('ОШИБКА')
+        result = 'Что-то пошло не так, проверьте введенные данные'
+
+    return render(request, 'main/result2.html', {result: result})
