@@ -20,7 +20,7 @@
   <input checked id="tab-btn-1" name="tab-btn" type="radio" value="">
   <label for="tab-btn-1">Критерий знаков</label>
   <input id="tab-btn-2" name="tab-btn" type="radio" value="">
-  <label for="tab-btn-2">Второй метод</label>
+  <label for="tab-btn-2">Параметрический t-Критерий Стьюдента</label>
   <input id="tab-btn-3" name="tab-btn" type="radio" value="">
   <label for="tab-btn-3">Еще какой-то расчет</label>
   <input id="tab-btn-4" name="tab-btn" type="radio" value="">
@@ -29,11 +29,36 @@
 <!-- Вкладки конец -->
 
   <div class="tab-content" id="content-1" align="center">
-      <p>Вводим пары значений, от 8 до 35 пар <br> Посчитаем плюcики и минусики получим результат согласно табличке критериев<br>
+      <p>Вводим пары значений, от 8 до 35 пар (через пробел или с новой строки) <br> Посчитаем плюcики и минусики получим результат согласно табличке критериев<br>
       Сюда тыкай, туда не тыкай, вот такое тут кратенькое описание
       </p>
     <form action="{% url 'result' %}" method="POST">
         {% csrf_token %}
+        <table width="20%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+            <tr align="center" valign="middle">
+                <th>Значение А</th>
+                <th>Значение Б</th>
+            </tr>
+            <tr align="center">
+                <td>
+                    <textarea name="first_param" required cols="4" rows="10" minlength="8" wrap="soft"></textarea>
+                </td>
+                <td>
+                    <textarea name="second_param" required cols="4" rows="10" minlength="8" wrap="soft"></textarea>
+                </td>
+            </tr>
+        </table>
+        <p></p>
+        <button type="submit">Расчитать</button>
+        <input name="reset" type="reset">
+    </form>
+  </div>
+
+
+  <div class="tab-content" id="content-2" align="center">
+    <form action="{% url 'result_stat_param2' %}" method="POST">
+        {% csrf_token %}
+        <p>Какое-то описание, чет введи, тыкни расчитать...</p>
         <table width="20%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
             <tr align="center" valign="middle">
                 <th>Значение А</th>
@@ -49,18 +74,6 @@
             </tr>
         </table>
         <p></p>
-        <button type="submit">Расчитать</button>
-        <input name="reset" type="reset">
-    </form>
-  </div>
-
-
-  <div class="tab-content" id="content-2">
-    <form action="{% url 'result_stat_param2' %}" method="POST">
-        {% csrf_token %}
-        <input name="first_param" type="text" maxlength="10" placeholder="Параметр 1"><br>
-        <input name="second_param"  type="number" required placeholder="Параметр 2"><br>
-        <input name="third_param"  type="number" step=".01" required placeholder="Параметр 2"><br>
         <button type="submit">Расчитать</button>
         <input name="reset" type="reset">
     </form>

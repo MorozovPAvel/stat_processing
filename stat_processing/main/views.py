@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from . import result_signs_criterium as rsg
+from . import get_standart_error as gse
 import pandas as pd
 
 
@@ -41,7 +42,7 @@ def result_page(request):
 
 
 
-        if count_plus >= count_minus:
+        if count_plus <= count_minus:
             result = rsg.signs_criterum_res(count_points, count_plus)
         else:
             result = rsg.signs_criterum_res(count_points, count_minus)
@@ -58,16 +59,28 @@ def result_page(request):
                                                 'count_minus': count_minus})
 
 def result_stat_param2(request):
-    result = ''
-    print("вторая вкладка")
+    result = 'В этом расчете пока ничего нет! Ведутся работы!!!!'
+
     try:
         param1 = request.POST['first_param']
         param2 = request.POST['second_param']
-        param3 = request.POST['third_param']
 
-        print(int(param1), param2, param3)
+        stroke = []
+        stroke_param1 = list(map(int, param1.split()))
+        stroke_param2 = list(map(int, param2.split()))
 
-        result = 'В этом расчете пока ничего нет! Ведутся работы!!!!'
+        if len(stroke_param1) == len(stroke_param2):
+            #находим среднее значение для введенных массивов
+            average1 = sum(stroke_param1) / len(stroke_param1)
+            average2 = sum(stroke_param2) / len(stroke_param2)
+
+
+            standart_error_num1 = gse.resurn_se(stroke_param1, average1)
+            standart_error_num2 = gse.resurn_se(stroke_param2, average2)
+
+        else:
+            result = 'Количество данных должно совпадать в обоих слобцах!'
+
     except:
         print('ОШИБКА')
         result = 'Что-то пошло не так, проверьте введенные данные'
