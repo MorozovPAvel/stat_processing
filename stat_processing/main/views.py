@@ -96,6 +96,10 @@ def result_stat_param2(request):
     except:
         print('ОШИБКА')
         result = 'Что-то пошло не так, проверьте введенные данные'
+        t_crit = ''
+        result1 = ''
+        stroke = []
+        t_crtterium = ''
 
     return render(request, 'main/result2.html', {'result': result,
                                                                         't_crit': t_crit,

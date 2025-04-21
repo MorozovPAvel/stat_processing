@@ -19,20 +19,27 @@
     <p>В табличке "Т критическое": {{ t_crit }}</p>
     <p>Расщитанное "Т критическое": {{ t_crtterium }}</p>
 
-    <p>Вводимые значния:</p>
-    <div class="div1">
-            <table border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
-                <tr  align="center">
-                    <th>Значение А</th>
-                    <th>Значение Б</th>
-                </tr>
-                {% for p1 in table %}
-                <tr  align="center">
-                    <td>{{ p1.par1 }}</td>
-                    <td>{{ p1.par2 }}</td>
-                </tr>
-                {% endfor %}
-            </table>
+
+    <div>
+        <div class="div1">
+            <p>Вводимые значния:</p>
+                <table border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+                    <tr  align="center">
+                        <th>Значение А</th>
+                        <th>Значение Б</th>
+                    </tr>
+                    {% for p1 in table %}
+                    <tr  align="center">
+                        <td>{{ p1.par1 }}</td>
+                        <td>{{ p1.par2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="div1">
+                <p>Табличка Стьюдента:</p>
+                <img class="image_table" src="{% static 'student_crit.png'%}" >
+            </div>
         </div>
     <p>Значения: {{ risevalue }}</p>
 
