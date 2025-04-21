@@ -16,8 +16,27 @@
         <button type="submit">На главную</button>
     </form>
     <p>Результат: <strong> {{ result }}</strong> </p>
+    <p>В табличке "Т критическое": {{ t_crit }}</p>
+    <p>Расщитанное "Т критическое": {{ t_crtterium }}</p>
 
-    <p>Формула по которой это все расчиталось...</p>
+    <p>Вводимые значния:</p>
+    <div class="div1">
+            <table border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+                <tr  align="center">
+                    <th>Значение А</th>
+                    <th>Значение Б</th>
+                </tr>
+                {% for p1 in table %}
+                <tr  align="center">
+                    <td>{{ p1.par1 }}</td>
+                    <td>{{ p1.par2 }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    <p>Значения: {{ risevalue }}</p>
+
+    <p>Формула по которой это все расчиталось... Или еще какое-то объяснение</p>
 
 
 </body>

@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from . import result_signs_criterium as rsg
+from . import result_student_criterium as rsc
 from . import get_standart_error as gse
 import pandas as pd
+import math
 
 
 #py manage.py runserver
@@ -69,20 +71,34 @@ def result_stat_param2(request):
         stroke_param1 = list(map(int, param1.split()))
         stroke_param2 = list(map(int, param2.split()))
 
-        if len(stroke_param1) == len(stroke_param2):
+        if len(stroke_param1) == len(stroke_param2) or len(stroke) >= 9 or len(stroke) <= 30:
             #находим среднее значение для введенных массивов
-            average1 = sum(stroke_param1) / len(stroke_param1)
-            average2 = sum(stroke_param2) / len(stroke_param2)
+            average1 = round(sum(stroke_param1) / len(stroke_param1), 2)
+            average2 = round(sum(stroke_param2) / len(stroke_param2), 2)
 
+            #вычисляем стандартную ошибку
+            standart_error_num1 = round(gse.resurn_se(stroke_param1, average1), 2)
+            standart_error_num2 = round(gse.resurn_se(stroke_param2, average2), 2)
 
-            standart_error_num1 = gse.resurn_se(stroke_param1, average1)
-            standart_error_num2 = gse.resurn_se(stroke_param2, average2)
+            t_crtterium = round(abs(average1 - average2) / math.sqrt((standart_error_num1 ** 2) + (standart_error_num2 ** 2)), 2)
+
+            result, t_crit = rsc.get_result(len(stroke_param1), t_crtterium)
+
+            result1 = f"avg {average1}, {average2}, se {standart_error_num1} {standart_error_num2}, f {t_crtterium}"
+
+            for i1, i2 in zip(stroke_param1, stroke_param2):
+                stroke.append({'par1': i1, 'par2': i2})
+
 
         else:
-            result = 'Количество данных должно совпадать в обоих слобцах!'
+            result = 'Количество данных должно совпадать в обоих слобцах! Либо слишком мало/много данных'
 
     except:
         print('ОШИБКА')
         result = 'Что-то пошло не так, проверьте введенные данные'
 
-    return render(request, 'main/result2.html', {'result': result})
+    return render(request, 'main/result2.html', {'result': result,
+                                                                        't_crit': t_crit,
+                                                                        'risevalue': result1,
+                                                                        'table': stroke,
+                                                                        't_crtterium': t_crtterium})

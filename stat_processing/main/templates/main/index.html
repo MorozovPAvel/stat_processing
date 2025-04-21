@@ -58,7 +58,7 @@
   <div class="tab-content" id="content-2" align="center">
     <form action="{% url 'result_stat_param2' %}" method="POST">
         {% csrf_token %}
-        <p>Какое-то описание, чет введи, тыкни расчитать...</p>
+        <p>Какое-то описание, чет введи, тыкни расчитать... <br>Вводить от 9 до 30 значений, количество введенных значений должно совпадать</p>
         <table width="20%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
             <tr align="center" valign="middle">
                 <th>Значение А</th>
