@@ -1,8 +1,8 @@
 
 
 def get_result(len_s, t_criterium):
-    result0 = 'H0'
-    result1 = 'H1'
+    result0 = 'H1'
+    result1 = 'H0'
     if len_s == 9:
         if t_criterium > 2.30:
             return result0, 2.30
