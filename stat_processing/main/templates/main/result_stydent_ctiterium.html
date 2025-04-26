@@ -15,9 +15,11 @@
         {% csrf_token %}
         <button type="submit">На главную</button>
     </form>
+
+
+    <p>t-Критическое: {{ t_crit }}</p>
+    <p>t-Эмперическое: {{ t_crtterium }}</p>
     <p>Результат: <strong> {{ result }}</strong> </p>
-    <p>В табличке "Т критическое": {{ t_crit }}</p>
-    <p>Расщитанное "Т критическое": {{ t_crtterium }}</p>
 
 
     <div>
@@ -41,9 +43,9 @@
                 <img class="image_table" src="{% static 'student_crit.png'%}" >
             </div>
         </div>
-    <p>Значения: {{ risevalue }}</p>
 
-    <p>Формула по которой это все расчиталось... Или еще какое-то объяснение</p>
+
+    <p>Описалово вот тут вставь!!!!</p>
 
 
 </body>
