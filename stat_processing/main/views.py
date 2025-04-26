@@ -18,7 +18,7 @@ def index(request):
 def parametric_criterium(request):
     return render(request, 'main/parametric_criterium.html', {'title': 'Стат обработка',
                                                'task_group':'Выбери раздел',
-                                               'name_page': 'Параместрические критерии',
+                                               'name_page': 'Параметрические критерии',
                                                'tasks': 'Выбери метод из представленных ниже'})
 
 def no_parametric_criterium(request):
