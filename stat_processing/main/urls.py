@@ -10,6 +10,6 @@ urlpatterns = [
     path('descriptive_statistics', views.descriptive_statistics, name='descriptive_statistics'),
     path('normal_distribution', views.normal_distribution, name='normal_distribution'),
     path('result', views.result_sings_criterium, name='result'),
-    path('result_stat_param2', views.result_stydent_criterium, name='result_stat_param2'),
+    path('result_stydent_criterium', views.result_stydent_criterium, name='result_stydent_criterium'),
     path('result_stat_param3', views.result_stat_param3, name='result_stat_param3')
 ]

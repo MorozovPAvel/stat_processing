@@ -80,6 +80,7 @@ def result_sings_criterium(request):
         result = 'Что-то пошло не так, проверьте введенные данные'
         stroke = []
     return render(request, 'main/result_sings_ctiterium.html', {'result': result,
+                                                'title': 'Стат обработка',
                                                 'table': stroke,
                                                 'count_plus': count_plus,
                                                 'count_minus': count_minus})
@@ -127,6 +128,7 @@ def result_stydent_criterium(request):
 
     return render(request, 'main/result_stydent_ctiterium.html', {'result': result,
                                                                         't_crit': t_crit,
+                                                                        'title': 'Стат обработка',
                                                                         'risevalue': result1,
                                                                         'table': stroke,
                                                                         't_crtterium': t_crtterium})

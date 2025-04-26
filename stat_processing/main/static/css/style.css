@@ -53,3 +53,9 @@ th {
 .image_table {
     width: 500px;
 }
+
+
+.nav_ul { list-style-type: none; margin: 0; padding: 0; display: flex}
+.nav_li { float: left; }
+.nav_li_a { display: block; color: #5e6dd0; text-align: center; padding: 7px 10px; text-decoration: none; }
+.nav_li_a:hover { background-color: #4d3de138; border-radius: 50px}

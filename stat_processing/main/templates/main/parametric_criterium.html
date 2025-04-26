@@ -15,15 +15,15 @@
     <h1>{{ name_page }}</h1>
     <p>{{ task_group }}</p>
     <!-- ПАРАМЕТРИЧЕСКИЕ КРИТЕРИИ -->
-        <nav>
-            <ul>
-                <li><a href="/">На главную</a></li>
-                <li><a href="descriptive_statistics">Описательная статистика</a></li>
-                <li><a href="normal_distribution">Нормальное праспределение</a></li>
-                <li><a href="no_parametric_criterium">Непараметрические критерии</a></li>
-            </ul>
-        </nav>
 
+<nav class="nav">
+    <ul class="nav_ul">
+        <li class="nav_ul_li"><a class="nav_li_a" href="/">На главную</a></li>
+        <li class="nav_ul_li"><a class="nav_li_a" href="descriptive_statistics">Описательная статистика</a></li>
+        <li class="nav_ul_li"><a class="nav_li_a" href="normal_distribution">Нормальное праспределение</a></li>
+        <li class="nav_ul_li"><a class="nav_li_a" href="no_parametric_criterium">Непараметрические критерии</a></li>
+    </ul>
+</nav>
 
     <p>{{ tasks }}</p>
 
@@ -35,7 +35,7 @@
 
 <!-- Критерий t-Стьюдента -->
   <div class="tab-content" id="content-1" align="center">
-    <form action="{% url 'result_stat_param2' %}" method="POST">
+    <form action="{% url 'result_stydent_criterium' %}" method="POST">
         {% csrf_token %}
         <p>Какое-то описание, чет введи, тыкни расчитать... <br>Вводить от 9 до 30 значений, количество введенных значений должно совпадать</p>
         <table width="20%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
