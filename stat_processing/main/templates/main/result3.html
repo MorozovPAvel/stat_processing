@@ -1,0 +1,45 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+</head>
+<body>
+    <h1>Результат вычислений (t-Критерий Стьюдента)</h1>
+    <form action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">На главную</button>
+    </form>
+    <p>Результат: <strong> {{ result }}</strong> </p>
+    <p>В табличке "Т критическое": {{ t_crit }}</p>
+    <p>Расщитанное "Т критическое": {{ t_crtterium }}</p>
+
+
+    <div>
+        <div class="div1">
+            <p>Вводимые значния:</p>
+                <table border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+                    <tr  align="center">
+                        <th>Значение А</th>
+                    </tr>
+                    {% for p1 in table %}
+                    <tr  align="center">
+                        <td>{{ p1.par1 }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>
+    <p>Значения: {{ risevalue }}</p>
+
+    <p>Формула по которой это все расчиталось... Или еще какое-то объяснение</p>
+
+
+</body>
+</html>

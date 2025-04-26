@@ -12,82 +12,22 @@
     <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
 </head>
 <body>
-    <h1>Медицинская статистика</h1>
-    <p>{{ tasks }}</p>
-
-<!-- Вкладки -->
-<div class="tab">
-  <input checked id="tab-btn-1" name="tab-btn" type="radio" value="">
-  <label for="tab-btn-1">Критерий знаков</label>
-  <input id="tab-btn-2" name="tab-btn" type="radio" value="">
-  <label for="tab-btn-2">Параметрический t-Критерий Стьюдента</label>
-  <input id="tab-btn-3" name="tab-btn" type="radio" value="">
-  <label for="tab-btn-3">Еще какой-то расчет</label>
-  <input id="tab-btn-4" name="tab-btn" type="radio" value="">
-  <label for="tab-btn-4">Новый критерий</label>
-
-<!-- Вкладки конец -->
-
-  <div class="tab-content" id="content-1" align="center">
-      <p>Вводим пары значений, от 8 до 35 пар (через пробел или с новой строки) <br> Посчитаем плюcики и минусики получим результат согласно табличке критериев<br>
-      Сюда тыкай, туда не тыкай, вот такое тут кратенькое описание
-      </p>
-    <form action="{% url 'result' %}" method="POST">
-        {% csrf_token %}
-        <table width="20%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
-            <tr align="center" valign="middle">
-                <th>Значение А</th>
-                <th>Значение Б</th>
-            </tr>
-            <tr align="center">
-                <td>
-                    <textarea name="first_param" required cols="4" rows="10" minlength="8" wrap="soft"></textarea>
-                </td>
-                <td>
-                    <textarea name="second_param" required cols="4" rows="10" minlength="8" wrap="soft"></textarea>
-                </td>
-            </tr>
-        </table>
-        <p></p>
-        <button type="submit">Расчитать</button>
-        <input name="reset" type="reset">
-    </form>
-  </div>
+    <h1>{{ name_page }}</h1>
+    <p>{{ task_group }}</p>
 
 
-  <div class="tab-content" id="content-2" align="center">
-    <form action="{% url 'result_stat_param2' %}" method="POST">
-        {% csrf_token %}
-        <p>Какое-то описание, чет введи, тыкни расчитать... <br>Вводить от 9 до 30 значений, количество введенных значений должно совпадать</p>
-        <table width="20%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
-            <tr align="center" valign="middle">
-                <th>Значение А</th>
-                <th>Значение Б</th>
-            </tr>
-            <tr align="center">
-                <td>
-                    <textarea name="first_param" required cols="4" rows="10" minlength="4" wrap="soft"></textarea>
-                </td>
-                <td>
-                    <textarea name="second_param" required cols="4" rows="10" wrap="soft"></textarea>
-                </td>
-            </tr>
-        </table>
-        <p></p>
-        <button type="submit">Расчитать</button>
-        <input name="reset" type="reset">
-    </form>
-  </div>
+<nav>
+    <ul>
+        <li><a href="descriptive_statistics">Описательная статистика</a></li>
+        <li><a href="normal_distribution">Нормальное праспределение</a></li>
+        <li><a href="parametric_criterium">Параметрические критерии</a></li>
+        <li><a href="no_parametric_criterium">Непараметрические критерии</a></li>
+    </ul>
+</nav>
 
-  <div class="tab-content" id="content-3">
-    В разработке...
-  </div>
+<p>{{ tasks }}</p>
 
-  <div class="tab-content" id="content-4">
-    Тут могла быть ваша реклама...
-  </div>
 
-</div>
 
 </body>
 </html>

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <!--
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    -->
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+</head>
+<body>
+    <h1>{{ name_page }}</h1>
+    <p>{{ task_group }}</p>
+    <!-- НОРМАЛЬНОЕ РАСПРЕДЕЛЕНИЕ -->
+        <nav>
+            <ul>
+                <li><a href="/">На главную</a></li>
+                <li><a href="descriptive_statistics">Описательная статистика</a></li>
+                <li><a href="parametric_criterium">Параметрические критерии</a></li>
+                <li><a href="no_parametric_criterium">Непараметрические критерии</a></li>
+            </ul>
+        </nav>
+
+    <p>{{ tasks }}</p>
+    <input checked id="tab-btn-1" name="tab-btn" type="radio" value="">
+    <label for="tab-btn-1">Критерий Шипиро-Уилка</label>
+
+    <div class="tab-content" id="content-1" align="center">
+    в разработке
+    </div>
+
+</body>
+</html>

@@ -11,10 +11,34 @@ import math
 # Create your views here.
 def index(request):
     return render(request, 'main/index.html', {'title': 'Стат обработка',
+                                               'task_group': 'Выбери раздел',
+                                               'name_page': 'Медицинская статистика',
                                                'tasks': 'Выбери метод из представленных ниже'})
 
+def parametric_criterium(request):
+    return render(request, 'main/parametric_criterium.html', {'title': 'Стат обработка',
+                                               'task_group':'Выбери раздел',
+                                               'name_page': 'Параместрические критерии',
+                                               'tasks': 'Выбери метод из представленных ниже'})
 
-def result_page(request):
+def no_parametric_criterium(request):
+    return render(request, 'main/no_parametric_criterium.html', {'title': 'Стат обработка',
+                                               'task_group':'Выбери раздел',
+                                               'name_page': 'Непараместрические критерии',
+                                               'tasks': 'Выбери метод из представленных ниже'})
+def normal_distribution(request):
+    return render(request, 'main/normal_distribution.html', {'title': 'Стат обработка',
+                                               'task_group':'Выбери раздел',
+                                               'name_page': 'Нормальное распределение',
+                                               'tasks': 'Выбери метод из представленных ниже'})
+
+def descriptive_statistics(request):
+    return render(request, 'main/descriptive_statistics.html', {'title': 'Стат обработка',
+                                               'task_group':'Выбери раздел',
+                                               'name_page': 'Описательная статистика',
+                                               'tasks': 'Выбери метод из представленных ниже'})
+
+def result_sings_criterium(request):
     result = ''
     try:
         param1 = request.POST['first_param']
@@ -55,13 +79,13 @@ def result_page(request):
     except:
         result = 'Что-то пошло не так, проверьте введенные данные'
         stroke = []
-    return render(request, 'main/result.html', {'result': result,
+    return render(request, 'main/result_sings_ctiterium.html', {'result': result,
                                                 'table': stroke,
                                                 'count_plus': count_plus,
                                                 'count_minus': count_minus})
 
-def result_stat_param2(request):
-    result = 'В этом расчете пока ничего нет! Ведутся работы!!!!'
+def result_stydent_criterium(request):
+    #result = 'В этом расчете пока ничего нет! Ведутся работы!!!!'
 
     try:
         param1 = request.POST['first_param']
@@ -101,8 +125,16 @@ def result_stat_param2(request):
         stroke = []
         t_crtterium = ''
 
-    return render(request, 'main/result2.html', {'result': result,
+    return render(request, 'main/result_stydent_ctiterium.html', {'result': result,
                                                                         't_crit': t_crit,
                                                                         'risevalue': result1,
                                                                         'table': stroke,
                                                                         't_crtterium': t_crtterium})
+
+
+def result_stat_param3(request):
+    result = ''
+    print('третий метод')
+    print(request)
+
+    return render(request, 'main/result3.html', {'result': result})
