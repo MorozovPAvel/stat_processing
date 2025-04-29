@@ -1,4 +1,8 @@
 from django.shortcuts import render, redirect
+from statistics import mode, median, stdev, variance
+import scipy
+from scipy.stats import skew
+from scipy.stats import kurtosis
 from . import result_signs_criterium as rsg
 from . import result_student_criterium as rsc
 from . import get_standart_error as gse
@@ -6,9 +10,6 @@ import pandas as pd
 import math
 
 
-#py manage.py runserver
-
-# Create your views here.
 def index(request):
     return render(request, 'main/index.html', {'title': 'Стат обработка',
                                                'task_group': 'Выбери раздел',
@@ -134,9 +135,75 @@ def result_stydent_criterium(request):
                                                                         't_crtterium': t_crtterium})
 
 
-def result_stat_param3(request):
-    result = ''
-    print('третий метод')
-    print(request)
+def result_descriptive_statistics(request):
+    result = 'Что-то пошло не так, проверьте введенные данные!!!'
+    average = 0
+    stroke = []
+    standart_error = 0
+    moda = 0
+    mediana = 0
+    standart_dev = 0
+    dispersia = 0
+    assimetric = 0
+    ekscess = 0
+    interval = 0
+    min_val = 0
+    max_val = 0
+    summ_val = 0
+    count_val = 0
 
-    return render(request, 'main/result3.html', {'result': result})
+    try:
+        result = ''
+        param = request.POST['first_param']
+
+
+        stroke_param = list(map(int, param.split()))
+        for i1 in stroke_param:
+            stroke.append({'par1': i1})
+
+        average = round(sum(stroke_param) / len(stroke_param), 2)
+
+        standart_error = round(gse.resurn_se(stroke_param, average), 2)
+
+        moda = mode(stroke_param)
+
+        mediana = median(stroke_param)
+
+        standart_dev = round(stdev(stroke_param), 2)
+
+        dispersia = round(variance(stroke_param), 2)
+
+        assimetric = round(skew(stroke_param, axis=0, bias=True), 2)
+
+        ekscess = round(kurtosis(stroke_param, axis=0, bias=True), 2)
+
+        interval = max(stroke_param) - min(stroke_param)
+
+        min_val = min(stroke_param)
+
+        max_val = max(stroke_param)
+
+        summ_val = sum(stroke_param)
+
+        count_val = len(stroke_param)
+
+    except:
+        print('ERROR in result_descriptive_statistics')
+        result = 'Что-то пошло не так, проверьте введенные данные!!!'
+
+
+    return render(request, 'main/result_descriptive_statistics.html', {'result': result,
+                                                                       'table': stroke,
+                                                                       'mediana': mediana,
+                                                                       'standart_error': standart_error,
+                                                                       'moda': moda,
+                                                                       'interval': interval,
+                                                                       'min_val': min_val,
+                                                                       'max_val': max_val,
+                                                                       'dispersia': dispersia,
+                                                                       'standart_dev': standart_dev,
+                                                                       'assimetric': assimetric,
+                                                                       'ekscess': ekscess,
+                                                                       'summ_val': summ_val,
+                                                                       'count_val': count_val,
+                                                                       'avg': average})

@@ -25,10 +25,27 @@
     </ul>
 </nav>
 
-
     <p>{{ tasks }}</p>
 
-В разработке
+<div align="center">
+    <form action="{% url 'result_descriptive_statistics' %}" method="POST">
+        {% csrf_token %}
+        <p>Какое-то описание, чет введи, тыкни расчитать... <br>Вводить сколько-то значений</p>
+        <table width="20%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+            <tr align="center" valign="middle">
+                <th>Значения</th>
+            </tr>
+            <tr align="center">
+                <td>
+                    <textarea name="first_param" required cols="4" rows="10" minlength="4" wrap="soft"></textarea>
+                </td>
+            </tr>
+        </table>
+        <p></p>
+        <button type="submit">Расчитать</button>
+        <input name="reset" type="reset">
+    </form>
+  </div>
 
 </body>
 </html>

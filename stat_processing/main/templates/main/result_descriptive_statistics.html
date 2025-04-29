@@ -1,0 +1,99 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+</head>
+<body>
+    <h1>Результат вычислений "Описательная статистика</h1>
+    <form action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">На главную</button>
+    </form>
+    <h1>{{ result }}</h1>
+    <div>
+        <div class="div1">
+                <table border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+                    <tr  align="center">
+                        <th>Вводимые значения</th>
+                    </tr>
+                    {% for p1 in table %}
+                    <tr  align="center">
+                        <td>{{ p1.par1 }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+        </div>
+            <div class="div1">
+                <table border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+                    <tr  align="center">
+                        <th>Показатель</th>
+                        <th>Значение</th>
+                    </tr>
+                    <tr  align="center">
+                        <td>Среднее</td>
+                        <td>{{ avg }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Стандартная ошибка</td>
+                        <td>{{ standart_error }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Медиана</td>
+                        <td>{{ mediana }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Мода</td>
+                        <td>{{ moda }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Стандартное отклонение</td>
+                        <td>{{ standart_dev }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Дисперсия</td>
+                        <td>{{ dispersia }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Асимметрия</td>
+                        <td>{{ assimetric }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Эксцесс</td>
+                        <td>{{ ekscess }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Интервал</td>
+                        <td>{{ interval }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Минимальное</td>
+                        <td>{{ min_val }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Максимальное</td>
+                        <td>{{ max_val }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Сумма</td>
+                        <td>{{ summ_val }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Счет</td>
+                        <td>{{ count_val }}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+    <p>Формула по которой это все расчиталось... Или еще какое-то объяснение</p>
+
+
+</body>
+</html>
