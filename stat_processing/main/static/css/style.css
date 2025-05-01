@@ -2,6 +2,18 @@ body{
   background:#dae8fc66
 }
 
+button{
+    background-color: #4d3de138;
+    border-radius: 50px;
+    color: #0620ce;
+}
+
+input[name="reset"] {
+    background-color: #4d3de138;
+    border-radius: 50px;
+    color: #0620ce;
+}
+
 .tab {
   display: flex;
   flex-wrap: wrap;

@@ -226,11 +226,8 @@ def result_spearmanr_criterium(request):
             stroke.append({'par1': i1, 'par2': i2})
 
         res_spearman = spearmanr(stroke_param1, stroke_param2)
-        print(res_spearman.statistic)
-        print(res_spearman.pvalue)
 
         result = round(res_spearman.statistic, 2)
-        print(result)
 
         if result > 0:
             if result >= 0.01 and result <= 0.29:
