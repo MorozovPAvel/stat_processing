@@ -241,11 +241,11 @@ def result_spearmanr_criterium(request):
                 description = 'Связь сильная положительная'
 
         if result < 0:
-            if result >= (-0.01) and result <= (-0.29):
+            if result <= (-0.01) and result >= (-0.29):
                 description = 'Связь слабая отрицательная'
-            if result >= (-0.30) and result <= (-0.69):
+            if result <= (-0.30) and result >= (-0.69):
                 description = 'Связь умеренная отрицательная'
-            if result >= (-0.70) and result <= (-1):
+            if result <= (-0.70) and result >= (-1):
                 description = 'Связь сильная отрицательная'
 
 
