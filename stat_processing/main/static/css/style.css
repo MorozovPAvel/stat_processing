@@ -54,6 +54,10 @@ th {
     width: 500px;
 }
 
+.image_start_page {
+    text-align: center;
+}
+
 .nav_ul_li { border: 1px solid #2f316d; border-radius: 50px; margin: 2px; }
 .nav_ul { list-style-type: none; margin: 0; padding: 0; display: flex}
 .nav_li { float: left;}
