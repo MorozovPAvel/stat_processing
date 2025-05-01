@@ -88,7 +88,6 @@ def result_sings_criterium(request):
                                                 'count_minus': count_minus})
 
 def result_stydent_criterium(request):
-    #result = 'В этом расчете пока ничего нет! Ведутся работы!!!!'
 
     try:
         param1 = request.POST['first_param']
@@ -97,6 +96,9 @@ def result_stydent_criterium(request):
         stroke = []
         stroke_param1 = list(map(float, param1.replace(',', '.').split()))
         stroke_param2 = list(map(float, param2.replace(',', '.').split()))
+
+        for i1, i2 in zip(stroke_param1, stroke_param2):
+            stroke.append({'par1': i1, 'par2': i2})
 
         if len(stroke_param1) == len(stroke_param2) or len(stroke) >= 9 or len(stroke) <= 30:
             #находим среднее значение для введенных массивов
@@ -113,19 +115,17 @@ def result_stydent_criterium(request):
 
             result1 = f"avg {average1}, {average2}, se {standart_error_num1} {standart_error_num2}, f {t_crtterium}"
 
-            for i1, i2 in zip(stroke_param1, stroke_param2):
-                stroke.append({'par1': i1, 'par2': i2})
-
-
         else:
-            result = 'Количество данных должно совпадать в обоих слобцах! Либо слишком мало/много данных'
+            result = 'Количество данных должно совпадать в обоих слобцах! Либо слишком мало/много данных (должно быть от 9 до 30)'
+            t_crit = ''
+            result1 = ''
+            t_crtterium = ''
 
     except:
-        print('ОШИБКА')
-        result = 'Что-то пошло не так, проверьте введенные данные'
+        print('ОШИБКА в result_stydent_criterium')
+        result = 'Количество данных должно совпадать в обоих слобцах! Либо слишком мало/много данных'
         t_crit = ''
         result1 = ''
-        stroke = []
         t_crtterium = ''
 
     return render(request, 'main/result_stydent_ctiterium.html', {'result': result,
