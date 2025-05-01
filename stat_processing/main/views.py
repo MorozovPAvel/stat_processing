@@ -230,6 +230,7 @@ def result_spearmanr_criterium(request):
         print(res_spearman.pvalue)
 
         result = round(res_spearman.statistic, 2)
+        print(result)
 
         if result > 0:
             if result >= 0.01 and result <= 0.29:
@@ -238,13 +239,14 @@ def result_spearmanr_criterium(request):
                 description = 'Связь умеренная положительная'
             if result >= 0.70 and result <= 1:
                 description = 'Связь сильная положительная'
-        else:
+
+        if result < 0:
             if result >= (-0.01) and result <= (-0.29):
                 description = 'Связь слабая отрицательная'
             if result >= (-0.30) and result <= (-0.69):
-                description = 'Связь умеренная положительная'
+                description = 'Связь умеренная отрицательная'
             if result >= (-0.70) and result <= (-1):
-                description = 'Связь сильная положительная'
+                description = 'Связь сильная отрицательная'
 
 
     except:
