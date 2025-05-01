@@ -11,5 +11,6 @@ urlpatterns = [
     path('normal_distribution', views.normal_distribution, name='normal_distribution'),
     path('result', views.result_sings_criterium, name='result'),
     path('result_stydent_criterium', views.result_stydent_criterium, name='result_stydent_criterium'),
+    path('result_spearmanr_criterium', views.result_spearmanr_criterium, name='result_spearmanr_criterium'),
     path('result_descriptive_statistics', views.result_descriptive_statistics, name='result_descriptive_statistics')
 ]

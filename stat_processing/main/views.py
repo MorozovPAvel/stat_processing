@@ -3,6 +3,7 @@ from statistics import mode, median, stdev, variance
 import scipy
 from scipy.stats import skew
 from scipy.stats import kurtosis
+from scipy.stats import spearmanr
 from . import result_signs_criterium as rsg
 from . import result_student_criterium as rsc
 from . import get_standart_error as gse
@@ -94,8 +95,8 @@ def result_stydent_criterium(request):
         param2 = request.POST['second_param']
 
         stroke = []
-        stroke_param1 = list(map(int, param1.split()))
-        stroke_param2 = list(map(int, param2.split()))
+        stroke_param1 = list(map(float, param1.split()))
+        stroke_param2 = list(map(float, param2.split()))
 
         if len(stroke_param1) == len(stroke_param2) or len(stroke) >= 9 or len(stroke) <= 30:
             #находим среднее значение для введенных массивов
@@ -157,7 +158,7 @@ def result_descriptive_statistics(request):
         param = request.POST['first_param']
 
 
-        stroke_param = list(map(int, param.split()))
+        stroke_param = list(map(float, param.split()))
         for i1 in stroke_param:
             stroke.append({'par1': i1})
 
@@ -208,3 +209,50 @@ def result_descriptive_statistics(request):
                                                                        'summ_val': summ_val,
                                                                        'count_val': count_val,
                                                                        'avg': average})
+
+def result_spearmanr_criterium(request):
+    result = 'В этом расчете пока ничего нет! Ведутся работы!!!!'
+    description = ''
+
+    try:
+        param1 = request.POST['first_param']
+        param2 = request.POST['second_param']
+
+        stroke = []
+        stroke_param1 = list(map(float, param1.split()))
+        stroke_param2 = list(map(float, param2.split()))
+
+        for i1, i2 in zip(stroke_param1, stroke_param2):
+            stroke.append({'par1': i1, 'par2': i2})
+
+        res_spearman = spearmanr(stroke_param1, stroke_param2)
+        print(res_spearman.statistic)
+        print(res_spearman.pvalue)
+
+        result = round(res_spearman.statistic, 2)
+
+        if result > 0:
+            if result > 0.01 and result <=0.29:
+                description = 'Связь слабая положительная'
+            if result > 0.30 and result <=0.69:
+                description = 'Связь умеренная положительная'
+            if result > 0.70 and result <=1:
+                description = 'Связь сильная положительная'
+        else:
+            if result > (-0.01) and result <= (-0.29):
+                description = 'Связь слабая отрицательная'
+            if result > (-0.30) and result <= (-0.69):
+                description = 'Связь умеренная положительная'
+            if result > (-0.70) and result <= (-1):
+                description = 'Связь сильная положительная'
+
+
+    except:
+        print('ERROR in result_stydent_criterium')
+        result = 'Что-то пошло не так, проверьте введенные данные!!!'
+
+    return render(request, 'main/result_spearmanr_criterium.html', {'result': result,
+                                                                    'title': 'МедМатСтат (Критерий Спирмана)',
+                                                                    'table': stroke,
+                                                                    'description': description
+                                                                       })
