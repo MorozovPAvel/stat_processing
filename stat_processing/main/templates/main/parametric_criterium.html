@@ -35,32 +35,55 @@
 
 
 <!-- Критерий t-Стьюдента -->
-  <div class="tab-content" id="content-1" align="center">
-    <form action="{% url 'result_stydent_criterium' %}" method="POST">
-        {% csrf_token %}
-        <p>Какое-то описание, чет введи, тыкни расчитать... <br>Вводить от 9 до 30 значений, количество введенных значений должно совпадать</p>
-        <table width="20%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
-            <tr align="center" valign="middle">
-                <th>Значение А</th>
-                <th>Значение Б</th>
-            </tr>
-            <tr align="center">
-                <td>
-                    <textarea name="first_param" required cols="4" rows="10" minlength="4" wrap="soft"></textarea>
-                </td>
-                <td>
-                    <textarea name="second_param" required cols="4" rows="10" wrap="soft"></textarea>
-                </td>
-            </tr>
-        </table>
-        <p></p>
-        <button type="submit">Расчитать</button>
-        <input name="reset" type="reset">
-    </form>
-  </div>
+        <div class="tab-content" id="content-1" align="center">
 
-  <div class="tab-content" id="content-2" align="center">
-  в разработке
-  </div>
+            <!-- Описание -->
+        <div style="width:95%;" class="image_start_page" >
+                <div style="width:35%">
+                    <p style="text-indent: 30px; text-align: justify;">
+                        t-критерий Стьюдента для независимых выборок — это статистический метод, <br>
+                        используемый для сравнения средних значений двух независимых групп. <br>
+                        &emsp; Он позволяет определить, существует ли статистически значимая разница между этими средними.
+                    </p>
+                    <p style="text-indent: 30px; text-align: justify;">
+                        Задачи, для решений которых может использоваться<i> t-критерий Стьюдента:</i>
+                        <br>- Сравнение результатов лечения между двумя группами пациентов <br> <i> &emsp; (например, одна группа получает новый препарат, а другая — плацебо).</i>
+                        <br>- Оценка различий в показателях <br> <i> &emsp;(например, уровень стресса) между двумя независимыми группами (мужчины и женщины).</i>
+                        <br>- Анализ влияния различных условий на результаты эксперимента <br> <i> &emsp;(например, разные методы обучения).</i>
+                    </p>
+                </div>
+
+              <div style="display: grid; place-items: center; padding-left: 50px;">
+                    <p style=" text-align: justify; width: 77%; font-size: 12px; margin: 0">
+                            Для расчета необходимо ввести от 9 до 30 значений. <br>
+                            Количество введенных значений в обоих выборках должно совпадать.
+                    </p>
+                    <form action="{% url 'result_stydent_criterium' %}" method="POST" style="width:95%">
+                        {% csrf_token %}
+                        <table width="80%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+
+                            <tr align="center" valign="middle">
+                                <th>Первая выборка</th>
+                                <th>Вторая выборка</th>
+                            </tr>
+                            <tr align="center">
+                                <td>
+                                    <textarea name="first_param" required cols="4" rows="10" minlength="4" wrap="soft"></textarea>
+                                </td>
+                                <td>
+                                    <textarea name="second_param" required cols="4" rows="10" wrap="soft"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                        <button type="submit">Расчитать</button>
+                        <input name="reset" type="reset">
+                    </form>
+              </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="content-2" align="center">
+        в разработке
+    </div>
 </div>
 </body>
