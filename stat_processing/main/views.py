@@ -14,30 +14,30 @@ def index(request):
     return render(request, 'main/index.html', {'title': 'МедМатСтат (Стартоваая страница)',
                                                'task_group': 'Выбери раздел',
                                                'name_page': '"МедМатСтат"',
-                                               'tasks': 'Выбери статистические критерии из представленных ниже'})
+                                               'tasks': 'Выбери статистический критерий из представленных ниже'})
 
 def parametric_criterium(request):
     return render(request, 'main/parametric_criterium.html', {'title': 'МедМатСтат (Параметрические критерии)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Параметрические критерии',
-                                               'tasks': 'Выбери статистические критерии из представленных ниже'})
+                                               'tasks': 'Выбери статистический критерий из представленных ниже'})
 
 def no_parametric_criterium(request):
     return render(request, 'main/no_parametric_criterium.html', {'title': 'МедМатСтат (Непраметрические критерии)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Непараместрические критерии',
-                                               'tasks': 'Выбери статистические критерии из представленных ниже'})
+                                               'tasks': 'Выбери статистический критерий из представленных ниже'})
 def normal_distribution(request):
     return render(request, 'main/normal_distribution.html', {'title': 'МедМатСтат (Нормальное распределение)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Нормальное распределение',
-                                               'tasks': 'Выбери статистические критерии из представленных ниже'})
+                                               'tasks': 'Выбери статистический критерий из представленных ниже'})
 
 def descriptive_statistics(request):
     return render(request, 'main/descriptive_statistics.html', {'title': 'МедМатСтат (Описательная статистика)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Описательная статистика',
-                                               'tasks': 'Выбери метод из представленных ниже'})
+                                               'tasks': 'Выбери статистический критерий из представленных ниже'})
 
 def result_sings_criterium(request):
     result = ''
