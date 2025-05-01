@@ -13,7 +13,7 @@ import math
 def index(request):
     return render(request, 'main/index.html', {'title': 'МедМатСтат (Стартоваая страница)',
                                                'task_group': 'Выбери раздел',
-                                               'name_page': 'Медицинская статистика',
+                                               'name_page': '"МедМатСтат"',
                                                'tasks': 'Выбери метод из представленных ниже'})
 
 def parametric_criterium(request):
