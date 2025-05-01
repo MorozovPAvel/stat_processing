@@ -47,8 +47,8 @@ def result_sings_criterium(request):
         param2 = request.POST['second_param']
 
         stroke = []
-        stroke_param1 = param1.split()
-        stroke_param2 = param2.split()
+        stroke_param1 = param1.replace(',', '.').split()
+        stroke_param2 = param2.replace(',', '.').split()
 
         count_points = 0
         count_plus = 0
@@ -95,8 +95,8 @@ def result_stydent_criterium(request):
         param2 = request.POST['second_param']
 
         stroke = []
-        stroke_param1 = list(map(float, param1.split()))
-        stroke_param2 = list(map(float, param2.split()))
+        stroke_param1 = list(map(float, param1.replace(',', '.').split()))
+        stroke_param2 = list(map(float, param2.replace(',', '.').split()))
 
         if len(stroke_param1) == len(stroke_param2) or len(stroke) >= 9 or len(stroke) <= 30:
             #находим среднее значение для введенных массивов
@@ -158,7 +158,7 @@ def result_descriptive_statistics(request):
         param = request.POST['first_param']
 
 
-        stroke_param = list(map(float, param.split()))
+        stroke_param = list(map(float, param.replace(',', '.').split()))
         for i1 in stroke_param:
             stroke.append({'par1': i1})
 
@@ -178,7 +178,7 @@ def result_descriptive_statistics(request):
 
         ekscess = round(kurtosis(stroke_param, axis=0, bias=True), 2)
 
-        interval = max(stroke_param) - min(stroke_param)
+        interval = round(max(stroke_param) - min(stroke_param), 2)
 
         min_val = min(stroke_param)
 
@@ -219,8 +219,8 @@ def result_spearmanr_criterium(request):
         param2 = request.POST['second_param']
 
         stroke = []
-        stroke_param1 = list(map(float, param1.split()))
-        stroke_param2 = list(map(float, param2.split()))
+        stroke_param1 = list(map(float, param1.replace(',', '.').split()))
+        stroke_param2 = list(map(float, param2.replace(',', '.').split()))
 
         for i1, i2 in zip(stroke_param1, stroke_param2):
             stroke.append({'par1': i1, 'par2': i2})
