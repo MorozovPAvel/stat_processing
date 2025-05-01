@@ -11,30 +11,30 @@ import math
 
 
 def index(request):
-    return render(request, 'main/index.html', {'title': 'Стат. обработка (Стартоваая страница)',
+    return render(request, 'main/index.html', {'title': 'МедМатСтат (Стартоваая страница)',
                                                'task_group': 'Выбери раздел',
                                                'name_page': 'Медицинская статистика',
                                                'tasks': 'Выбери метод из представленных ниже'})
 
 def parametric_criterium(request):
-    return render(request, 'main/parametric_criterium.html', {'title': 'Стат. обработка (Параметрические критерии)',
+    return render(request, 'main/parametric_criterium.html', {'title': 'МедМатСтат (Параметрические критерии)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Параметрические критерии',
                                                'tasks': 'Выбери метод из представленных ниже'})
 
 def no_parametric_criterium(request):
-    return render(request, 'main/no_parametric_criterium.html', {'title': 'Стат. обработка (Непраметрические критерии)',
+    return render(request, 'main/no_parametric_criterium.html', {'title': 'МедМатСтат (Непраметрические критерии)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Непараместрические критерии',
                                                'tasks': 'Выбери метод из представленных ниже'})
 def normal_distribution(request):
-    return render(request, 'main/normal_distribution.html', {'title': 'Стат. обработка (Нормальное распределение)',
+    return render(request, 'main/normal_distribution.html', {'title': 'МедМатСтат (Нормальное распределение)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Нормальное распределение',
                                                'tasks': 'Выбери метод из представленных ниже'})
 
 def descriptive_statistics(request):
-    return render(request, 'main/descriptive_statistics.html', {'title': 'Стат. обработка (Описательная статистика)',
+    return render(request, 'main/descriptive_statistics.html', {'title': 'МедМатСтат (Описательная статистика)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Описательная статистика',
                                                'tasks': 'Выбери метод из представленных ниже'})
@@ -81,7 +81,7 @@ def result_sings_criterium(request):
         result = 'Что-то пошло не так, проверьте введенные данные'
         stroke = []
     return render(request, 'main/result_sings_ctiterium.html', {'result': result,
-                                                'title': 'Стат обработка',
+                                                'title': 'МедМатСтат',
                                                 'table': stroke,
                                                 'count_plus': count_plus,
                                                 'count_minus': count_minus})
@@ -129,7 +129,7 @@ def result_stydent_criterium(request):
 
     return render(request, 'main/result_stydent_ctiterium.html', {'result': result,
                                                                         't_crit': t_crit,
-                                                                        'title': 'Стат обработка',
+                                                                        'title': 'МедМатСтат',
                                                                         'risevalue': result1,
                                                                         'table': stroke,
                                                                         't_crtterium': t_crtterium})
@@ -193,6 +193,7 @@ def result_descriptive_statistics(request):
 
 
     return render(request, 'main/result_descriptive_statistics.html', {'result': result,
+                                                                       'title': 'МедМатСтат',
                                                                        'table': stroke,
                                                                        'mediana': mediana,
                                                                        'standart_error': standart_error,
