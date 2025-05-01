@@ -54,8 +54,9 @@ th {
     width: 500px;
 }
 
-
+.nav_ul_li { border: 1px solid #2f316d; border-radius: 50px; margin: 2px; }
 .nav_ul { list-style-type: none; margin: 0; padding: 0; display: flex}
-.nav_li { float: left; }
-.nav_li_a { display: block; color: #5e6dd0; text-align: center; padding: 7px 10px; text-decoration: none; }
+.nav_li { float: left;}
+.nav_li_a { display: block; color: #253dd9; text-align: center; padding: 7px 10px; text-decoration: none; }
 .nav_li_a:hover { background-color: #4d3de138; border-radius: 50px}
+.activ_nav{ background-color: #4d3de138; border-radius: 50px }

@@ -11,30 +11,30 @@ import math
 
 
 def index(request):
-    return render(request, 'main/index.html', {'title': 'Стат обработка',
+    return render(request, 'main/index.html', {'title': 'Стат. обработка (Стартоваая страница)',
                                                'task_group': 'Выбери раздел',
                                                'name_page': 'Медицинская статистика',
                                                'tasks': 'Выбери метод из представленных ниже'})
 
 def parametric_criterium(request):
-    return render(request, 'main/parametric_criterium.html', {'title': 'Стат обработка',
+    return render(request, 'main/parametric_criterium.html', {'title': 'Стат. обработка (Параметрические критерии)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Параметрические критерии',
                                                'tasks': 'Выбери метод из представленных ниже'})
 
 def no_parametric_criterium(request):
-    return render(request, 'main/no_parametric_criterium.html', {'title': 'Стат обработка',
+    return render(request, 'main/no_parametric_criterium.html', {'title': 'Стат. обработка (Непраметрические критерии)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Непараместрические критерии',
                                                'tasks': 'Выбери метод из представленных ниже'})
 def normal_distribution(request):
-    return render(request, 'main/normal_distribution.html', {'title': 'Стат обработка',
+    return render(request, 'main/normal_distribution.html', {'title': 'Стат. обработка (Нормальное распределение)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Нормальное распределение',
                                                'tasks': 'Выбери метод из представленных ниже'})
 
 def descriptive_statistics(request):
-    return render(request, 'main/descriptive_statistics.html', {'title': 'Стат обработка',
+    return render(request, 'main/descriptive_statistics.html', {'title': 'Стат. обработка (Описательная статистика)',
                                                'task_group':'Выбери раздел',
                                                'name_page': 'Описательная статистика',
                                                'tasks': 'Выбери метод из представленных ниже'})
