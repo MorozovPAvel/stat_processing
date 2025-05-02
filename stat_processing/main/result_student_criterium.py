@@ -114,3 +114,18 @@ def get_result(len_s, t_criterium):
             return result0, 2.04
         else:
             return result1, 2.04
+    if 30 <= len_s <= 39:
+        if t_criterium > 2.02:
+            return result0, 2.02
+        else:
+            return result1, 2.02
+    if 40 <= len_s <= 59:
+        if t_criterium > 2.00:
+            return result0, 2.00
+        else:
+            return result1, 2.00
+    if 60 <= len_s <= 120:
+        if t_criterium > 1.97:
+            return result0, 1.97
+        else:
+            return result1, 1.97
