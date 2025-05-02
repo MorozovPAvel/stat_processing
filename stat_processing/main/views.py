@@ -101,7 +101,7 @@ def result_stydent_criterium(request):
         for i1, i2 in zip(stroke_param1, stroke_param2):
             stroke.append({'par1': i1, 'par2': i2})
 
-        if len(stroke_param1) == len(stroke_param2) or len(stroke) >= 9 or len(stroke) <= 30:
+        if len(stroke_param1) == len(stroke_param2) or len(stroke) >= 9 or len(stroke) <= 120:
             #находим среднее значение для введенных массивов
             average1 = round(sum(stroke_param1) / len(stroke_param1), 2)
             average2 = round(sum(stroke_param2) / len(stroke_param2), 2)
