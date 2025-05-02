@@ -191,7 +191,7 @@ def result_descriptive_statistics(request):
         count_val = len(stroke_param)
 
         result, assimetric_r, ekscess_r = rcea.get_result_coef_e_a(len(stroke_param), abs(assimetric), abs(ekscess))
-
+        print(rcea.get_result_coef_e_a(len(stroke_param), abs(assimetric), abs(ekscess)))
         len_list = len(stroke_param)
 
     except:
@@ -204,6 +204,8 @@ def result_descriptive_statistics(request):
                                                                        'table': stroke,
                                                                        'assimetric_r': assimetric_r,
                                                                        'ekscess_r': ekscess_r,
+                                                                       'assimetric_t': abs(assimetric),
+                                                                       'eksces_t': abs(ekscess),
                                                                        'len_list': len_list,
                                                                        'mediana': mediana,
                                                                        'standart_error': standart_error,
