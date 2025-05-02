@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
 </head>
 <body>
-    <h1>Результат вычислений "Описательная статистика"</h1>
+    <h1>Результат вычислений "Коэффициенты эксцесса и асимметрии"</h1>
     <form action="{% url 'home' %}" method="POST">
         {% csrf_token %}
         <button type="submit">На главную</button>
     </form>
-    <h1>{{ result }}</h1>
+    <p>{{ result }}</p>
+    <p>Всего введено {{ len_list }} значений</p>
     <div>
         <div class="div1">
                 <table border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
@@ -36,30 +37,6 @@
                         <th>Значение</th>
                     </tr>
                     <tr  align="center">
-                        <td>Среднее</td>
-                        <td>{{ avg }}</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>Стандартная ошибка</td>
-                        <td>{{ standart_error }}</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>Медиана</td>
-                        <td>{{ mediana }}</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>Мода</td>
-                        <td>{{ moda }}</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>Стандартное отклонение</td>
-                        <td>{{ standart_dev }}</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>Дисперсия</td>
-                        <td>{{ dispersia }}</td>
-                    </tr>
-                    <tr  align="center">
                         <td>Асимметрия</td>
                         <td>{{ assimetric }}</td>
                     </tr>
@@ -67,25 +44,6 @@
                         <td>Эксцесс</td>
                         <td>{{ ekscess }}</td>
                     </tr>
-                    <tr  align="center">
-                        <td>Интервал</td>
-                        <td>{{ interval }}</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>Минимальное</td>
-                        <td>{{ min_val }}</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>Максимальное</td>
-                        <td>{{ max_val }}</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>Сумма</td>
-                        <td>{{ summ_val }}</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>Счет</td>
-                        <td>{{ count_val }}</td>
                     </tr>
                 </table>
             </div>

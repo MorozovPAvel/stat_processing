@@ -29,10 +29,46 @@
     <div class="tab">
         <input checked id="tab-btn-1" name="tab-btn" type="radio" value="">
         <label for="tab-btn-1">Критерий Шипиро-Уилка</label>
+        <input id="tab-btn-2" name="tab-btn" type="radio" value="">
+        <label for="tab-btn-2">Коэффициенты эксцесса и асимметрии</label>
 
 
     <div class="tab-content" id="content-1" align="center">
     в разработке
+    </div>
+
+        <!-- Коэффицент эксцесса и асимметрии -->
+    <div class="tab-content" id="content-2" align="center">
+        <div style="width:95%;" class="image_start_page" >
+                <div style="width:30%">
+                    <p style="text-indent: 30px; text-align: justify;">
+                        Описание
+                    </p>
+                </div>
+            <!-- форма ввода -->
+                <div style="display: grid; place-items: center; padding-left: 50px; width: 65%;">
+                    <p style=" text-align: centre; width: 77%; font-size: 12px; margin: 0">
+                            Что-то вводим <b>(до 125 значений)</b>, что-то получаем.
+                    </p>
+                    <form action="{% url 'result_coef_ekscess_assimmetric' %}" method="POST" style="width:95%">
+                        {% csrf_token %}
+                        <table width="80%" border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+
+                            <tr align="center" valign="middle">
+                                <th>Выборка</th>
+                            </tr>
+                            <tr align="center">
+                                <td>
+                                    <textarea name="first_param" required cols="4" rows="10" minlength="4" wrap="soft"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                        <p></p>
+                        <button type="submit">Рассчитать</button>
+                        <input name="reset" type="reset">
+                    </form>
+                </div>
+        </div>
     </div>
     </div>
 </body>

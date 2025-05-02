@@ -7,6 +7,7 @@ from scipy.stats import spearmanr
 from . import result_signs_criterium as rsg
 from . import result_student_criterium as rsc
 from . import get_standart_error as gse
+from . import result_coef_ekscess_assimmetric as rcea
 import pandas as pd
 import math
 
@@ -254,4 +255,37 @@ def result_spearmanr_criterium(request):
                                                                     'title': 'МедМатСтат (Критерий Спирмана)',
                                                                     'table': stroke,
                                                                     'description': description
+                                                                       })
+
+
+def result_coef_ekscess_assimmetric(request):
+    result = 'Что-то пошло не так, проверьте введенные данные'
+    len_list = 0
+    try:
+        param1 = request.POST['first_param']
+
+        stroke = []
+        stroke_param = list(map(float, param1.replace(',', '.').split()))
+
+        for i1 in stroke_param:
+            stroke.append({'par1': i1})
+
+        assimetric = round(skew(stroke_param, axis=0, bias=True), 2)
+
+        ekscess = round(kurtosis(stroke_param, axis=0, bias=True), 2)
+
+        result = rcea.get_result_coef_e_a(len(stroke_param), abs(assimetric), abs(ekscess))
+
+        len_list = len(stroke_param)
+
+
+    except:
+        print('ERROR in result_coef_ekscess_assimmetric')
+
+    return render(request, 'main/result_coef_ekscess_assimmetric.html', {'result': result,
+                                                                    'title': 'МедМатСтат (Коэффициенты эксцесса и асимметрии)',
+                                                                    'table': stroke,
+                                                                    'len_list': len_list,
+                                                                    'assimetric': assimetric,
+                                                                    'ekscess': ekscess
                                                                        })
