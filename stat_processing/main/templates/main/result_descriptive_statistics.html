@@ -15,8 +15,10 @@
         {% csrf_token %}
         <button type="submit">На главную</button>
     </form>
-    <h1>{{ result }}</h1>
+
+
     <div>
+        <p>Всего введено <i>{{ len_list }}</i> значений</p>
         <div class="div1">
                 <table border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
                     <tr  align="center">
@@ -89,10 +91,30 @@
                     </tr>
                 </table>
             </div>
+            <div class="div1">
+                <p>{{ result }}</p>
+                <table border="1" cellpadding="4" cellspacing="0" bordercolor="#666666" bordercolorlight="#666666" bordercolordark="#FFFFFF">
+                    <tr  align="center">
+                        <th>Показатель</th>
+                        <th>Эмпирические</th>
+                        <th>Критические</th>
+                    </tr>
+                    <tr  align="center">
+                        <td>Асимметрия</td>
+                        <td>{{ assimetric }}</td>
+                        <td>{{ assimetric_r }}</td>
+                    </tr>
+                    <tr  align="center">
+                        <td>Эксцесс</td>
+                        <td>{{ ekscess }}</td>
+                        <td>{{ ekscess_r }}</td>
+                    </tr>
+                </table>
+            </div>
 
         </div>
 
-    <p>Формула по которой это все расчиталось... Или еще какое-то объяснение</p>
+
 
 
 </body>

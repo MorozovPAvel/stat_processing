@@ -153,6 +153,7 @@ def result_descriptive_statistics(request):
     max_val = 0
     summ_val = 0
     count_val = 0
+    len_list = 0
 
     try:
         result = ''
@@ -189,6 +190,10 @@ def result_descriptive_statistics(request):
 
         count_val = len(stroke_param)
 
+        result, assimetric_r, ekscess_r = rcea.get_result_coef_e_a(len(stroke_param), abs(assimetric), abs(ekscess))
+
+        len_list = len(stroke_param)
+
     except:
         print('ERROR in result_descriptive_statistics')
         result = 'Что-то пошло не так, проверьте введенные данные!!!'
@@ -197,6 +202,9 @@ def result_descriptive_statistics(request):
     return render(request, 'main/result_descriptive_statistics.html', {'result': result,
                                                                        'title': 'МедМатСтат (Описательная статистика)',
                                                                        'table': stroke,
+                                                                       'assimetric_r': assimetric_r,
+                                                                       'ekscess_r': ekscess_r,
+                                                                       'len_list': len_list,
                                                                        'mediana': mediana,
                                                                        'standart_error': standart_error,
                                                                        'moda': moda,
