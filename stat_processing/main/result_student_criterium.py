@@ -1,8 +1,8 @@
 
 
 def get_result(len_s, t_criterium):
-    result0 = 'H1 (t-эмперическое > t-критическое)'
-    result1 = 'H0 (t-эмперическое < t-критическое)'
+    result0 = 'H1 (t-эмпирическое > t-критическое)'
+    result1 = 'H0 (t-эмпирическое < t-критическое)'
     if len_s == 9:
         if t_criterium > 2.30:
             return result0, 2.30
